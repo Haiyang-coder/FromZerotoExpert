@@ -19,6 +19,9 @@ public class Register extends HttpServlet {
         Cookie cookie = new Cookie("user", "test");
         cookie.setMaxAge(60 * 60 * 24);
         resp.addCookie(cookie);
+        System.out.println("用户注册完成");
+        req.getRequestDispatcher ("/ShowPage").forward(req,resp);
+
 
     }
 }
