@@ -18,19 +18,22 @@ public class CheckIn extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cookie[] cookies = req.getCookies();
         String userName = null;
+        //check whether user registered
         for(Cookie cookie : cookies){
             if (cookie.getName().equals("user")){
                 userName = cookie.getValue();
             }
         }
+
         if(userName == null){
             //if the user dont regiseter, regiseter now
             System.out.println("用户没有注册，立即注册");
             req.getRequestDispatcher("/Register").forward(req,resp);
         }else{
             System.out.println("用户已经注册");
-            req.getRequestDispatcher("/FromZerotoExpert");
+            req.getRequestDispatcher("/RegisterPage").forward(req,resp);
         }
 
     }
 }
+

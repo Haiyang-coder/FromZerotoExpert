@@ -12,27 +12,16 @@ import java.io.PrintWriter;
  * @author: sunhengkang
  * @date:2022/9/8
  */
-@WebServlet(value = "/FromZerotoExpert")
-public class ShowPage extends HttpServlet {
-
-    @Override
+@WebServlet(value = "/RegisterPage")
+public class RegisterPage extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //the first setp : check whether the user is already registered
-        System.out.println("jinru show page");
-        req.getRequestDispatcher("/CheckIn").forward(req,resp);
-        String h1 = "嗨，欢迎来到 from zero to expert.xx";
+        System.out.println("进入 RegisterPage");
+        String h1 = "嗨，欢迎再次来到 from zero to expert.xx";
 
         //Attention Creating PrintWriter must behind the Setting code
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter writer = resp.getWriter();
         writer.println("<h1>"+ h1 + "</h1>");
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //super.doPost(req, resp);
     }
 }
-
