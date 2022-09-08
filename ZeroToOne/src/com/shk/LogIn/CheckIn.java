@@ -19,6 +19,12 @@ public class CheckIn extends HttpServlet {
         Cookie[] cookies = req.getCookies();
         String userName = null;
         //check whether user registered
+        if(cookies == null){
+            //if the user dont regiseter, regiseter now
+            System.out.println("用户没有注册，立即注册");
+            req.getRequestDispatcher("/Register").forward(req,resp);
+        }
+
         for(Cookie cookie : cookies){
             if (cookie.getName().equals("user")){
                 userName = cookie.getValue();
