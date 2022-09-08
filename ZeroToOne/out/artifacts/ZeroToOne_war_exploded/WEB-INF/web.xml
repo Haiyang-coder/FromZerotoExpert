@@ -4,16 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     
-    <servlet>
-        <!-- alias of servlet -->
-        <servlet-name>shk</servlet-name>
-        <servlet-class>com.shk.serverlettest.serverlet</servlet-class>
-    </servlet>
 
-    <!-- -->
-    <servlet-mapping>
-        <servlet-name>shk</servlet-name>
-        <url-pattern>/FromZerotoExpert</url-pattern>
-    </servlet-mapping>
 
 </web-app>
