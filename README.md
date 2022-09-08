@@ -68,3 +68,5 @@ the first item from shuaidi
         ~$ sudo pfctl -ef /etc/pf-tomcat.conf
         再去浏览器输入localhost看看
         成功了
+        
+2.chrome 存放cookie的路径：/Users/sunhaiyang/Library/Application Support/Google/Chrome/Default        
