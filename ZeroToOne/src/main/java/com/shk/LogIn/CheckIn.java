@@ -1,4 +1,4 @@
-package com.shk.LogIn;
+package main.java.com.shk.LogIn;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

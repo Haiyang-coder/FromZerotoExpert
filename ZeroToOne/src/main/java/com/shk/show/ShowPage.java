@@ -1,4 +1,4 @@
-package com.shk.show;
+package main.java.com.shk.show;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
