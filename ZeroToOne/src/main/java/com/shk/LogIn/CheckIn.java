@@ -1,7 +1,6 @@
-package main.java.com.shk.LogIn;
+package com.shk.LogIn;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +11,6 @@ import java.io.IOException;
  * @author: sunhengkang
  * @date:2022/9/8
  */
-@WebServlet(value = "/FromZerotoExpert", loadOnStartup = 0)
 public class CheckIn extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

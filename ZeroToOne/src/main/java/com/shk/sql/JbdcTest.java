@@ -1,4 +1,4 @@
-package main.java.com.shk.sql;
+package com.shk.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

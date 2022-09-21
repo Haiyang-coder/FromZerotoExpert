@@ -1,4 +1,4 @@
-package main.java.com.shk.show;
+package com.shk.show;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +13,6 @@ import java.io.PrintWriter;
  * @author: sunhengkang
  * @date:2022/9/8
  */
-@WebServlet(value = "/ShowPage")
 public class ShowPage extends HttpServlet
 {
     @Override

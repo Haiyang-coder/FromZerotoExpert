@@ -1,6 +1,9 @@
 package com.shk.mapper;
 
 import com.shk.pojo.User;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Map;
 
 /**
  * @author: sunhengkang
@@ -15,5 +18,23 @@ public interface UserMapper {
      * 根据id 查询用户
      */
     User getUsername();
+    /**
+     * 根据用户名返回用户的信息
+     */
+    User getUserByUsername(String userName);
+    /**
+     * 检查用户名和密码是否正确
+     */
+    User checkLogin(Map<String, Object> map);
 
+    /**
+     *
+     * 当传入的参数是实体类的对象的时候
+     */
+    int insertUserByUser(User user);
+
+    /**
+     * 通过注解来自定义参数名
+     */
+    User checkLogin(@Param("username") String username,@Param("password") String password);
 }

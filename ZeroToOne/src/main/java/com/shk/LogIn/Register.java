@@ -1,4 +1,4 @@
-package main.java.com.shk.LogIn;
+package com.shk.LogIn;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +12,6 @@ import java.io.IOException;
  * @author: sunhengkang
  * @date:2022/9/8
  */
-@WebServlet(value = "/Register")
 public class Register extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
