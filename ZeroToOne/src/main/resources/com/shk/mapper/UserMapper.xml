@@ -39,7 +39,7 @@ ${}的本质是字符串拼接，需要你自己来加引号
     </insert>
 
     <!--    checkLogin(String userName, String password)-->
-    <select id="checkLogin" resultType="User">
-        select * from user where username = #{username} and password = #{password};
-    </select>
+<!--    <select id="checkLogin" resultType="User">-->
+<!--        select * from user where username = #{username} and password = #{password};-->
+<!--    </select>-->
 </mapper>

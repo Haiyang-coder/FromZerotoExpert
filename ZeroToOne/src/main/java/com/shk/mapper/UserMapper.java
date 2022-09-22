@@ -2,6 +2,7 @@ package com.shk.mapper;
 
 import com.shk.pojo.User;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.Map;
 
@@ -36,5 +37,6 @@ public interface UserMapper {
     /**
      * 通过注解来自定义参数名
      */
+    @Select( "select * from user where username = #{username} and password = #{password};")
     User checkLogin(@Param("username") String username,@Param("password") String password);
 }

@@ -1,6 +1,6 @@
 package com.shk;
 
-import com.shk.utils.utils;
+import com.shk.utils.Utils;
 import com.shk.mapper.UserMapper;
 import com.shk.pojo.User;
 import org.apache.ibatis.io.Resources;
@@ -42,7 +42,7 @@ public class mybatis {
 
     @Test
     public  void updateTest() throws IOException {
-        SqlSession sqlSession = utils.getSqlSession();
+        SqlSession sqlSession = Utils.getSqlSession();
         //获取mapper借口对象
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         //测试功能
@@ -55,7 +55,7 @@ public class mybatis {
 
     @Test
     public  void updateTest2() throws IOException {
-        SqlSession sqlSession = utils.getSqlSession();
+        SqlSession sqlSession = Utils.getSqlSession();
         //获取mapper借口对象
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         //测试功能

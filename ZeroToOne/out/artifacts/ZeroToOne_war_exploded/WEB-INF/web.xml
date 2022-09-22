@@ -38,5 +38,21 @@
         <url-pattern>/ShowPage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ShowRegisetrPage</servlet-name>
+        <servlet-class>com.shk.show.ShowRegiseterPage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowRegisetrPage</servlet-name>
+        <url-pattern>/FromZerotoExpert/Register</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.shk.LogIn.CheckUserRegister</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
