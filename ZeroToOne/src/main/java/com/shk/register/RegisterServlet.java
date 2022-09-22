@@ -1,4 +1,4 @@
-package com.shk.LogIn;
+package com.shk.register;
 
 import com.shk.mapper.UserMapper;
 import com.shk.pojo.User;
@@ -14,28 +14,32 @@ import java.io.PrintWriter;
 
 /**
  * @author: sunhengkang
- * @date:2022/9/21
+ * @date:2022/9/22
  */
-public class CheckUserRegister extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //1.接收前端传来的用户名和密码
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        //2.使用mybatis查询数据库
+
+        //获取sqlsession
         SqlSession sqlSession = SqlSessionUtil.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        User user = mapper.checkLogin(username, password);
-        sqlSession.close();
-        //3.判断数据库查询结果
-        resp.setContentType("text/html;charset=utf-8");
-        PrintWriter writer = resp.getWriter();
-        if (user != null){
-            writer.println("登陆成功");
-        }else {
-            writer.println("登录失败");
-        }
+        User user = mapper.checkUserIsExist(username);
 
+        //判断用户用户名是否重复
+        if (user != null){
+            resp.setContentType("text/html;charset=utf-8");
+            PrintWriter writer = resp.getWriter();
+            writer.println("用户名已经存在了");
+        }else {
+            mapper.insertUser(username, password);
+            sqlSession.commit();
+            resp.setContentType("text/html;charset=utf-8");
+            PrintWriter writer = resp.getWriter();
+            writer.println("注册成功");
+        }
+       sqlSession.close();
 
     }
 }
