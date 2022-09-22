@@ -37,6 +37,20 @@ public class mybatis {
     }
 
     @Test
+    public void hashmaptest(){
+        HashMap stringStringHashMap = new HashMap(10);
+        Map nowMap = null;
+        Map<String, String> newWorMap = null;
+
+        nowMap = stringStringHashMap;
+        newWorMap = new HashMap<String, String>();
+        newWorMap.put("isEnd", "0");     //不是最后一个
+        nowMap = newWorMap;
+        System.out.println(stringStringHashMap);
+        System.out.println(nowMap);
+        System.out.println(newWorMap);
+    }
+    @Test
     public  void updateTest() throws IOException {
         SqlSession sqlSession = SqlSessionUtil.getSqlSession();
         //获取mapper借口对象

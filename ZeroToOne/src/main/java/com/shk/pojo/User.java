@@ -9,11 +9,21 @@ public class User {
     private Integer id;
     private String userName;
     private String password;
+    private String userNickName;
 
-    public User(Integer id, String userName, String password) {
+    public String getUserNickName() {
+        return userNickName;
+    }
+
+    public void setUserNickName(String userNickName) {
+        this.userNickName = userNickName;
+    }
+
+    public User(Integer id, String userName, String password, String userNickName) {
         this.userName = userName;
         this.password = password;
         this.id = id;
+        this.userNickName = userNickName;
     }
 
     public Integer getId() {
@@ -42,10 +52,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "user{" +
+        return "User{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
+                ", userNickName='" + userNickName + '\'' +
                 '}';
     }
 }
