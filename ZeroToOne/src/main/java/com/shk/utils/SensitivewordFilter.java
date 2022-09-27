@@ -1,9 +1,10 @@
 package com.shk.utils;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.shk.mapper.SensitiveMapper;
+import com.shk.pojo.DisallowWord;
+import org.apache.ibatis.session.SqlSession;
+
+import java.util.*;
 
 /**
  * @author: sunhengkang
@@ -13,8 +14,11 @@ public class SensitivewordFilter {
     //敏感词树
     private static HashMap sensitiveWordMap = null;
     //匹配规则
-    public static final int MinMatchTYpe = 1;      //最小匹配规则，如：敏感词库["中国","中国人"]，语句："我是中国人"，匹配结果：我是[中国]人
-    public static final int MaxMatchType = 2;      //最大匹配规则，如：敏感词库["中国","中国人"]，语句："我是中国人"，匹配结果：我是[中国人]
+    private static final int MinMatchTYpe = 1;      //最小匹配规则，如：敏感词库["中国","中国人"]，语句："我是中国人"，匹配结果：我是[中国]人
+    private static final int MaxMatchType = 2;      //最大匹配规则，如：敏感词库["中国","中国人"]，语句："我是中国人"，匹配结果：我是[中国人]
+    //敏感词组的集合
+    private static Set<String> wordSet = null;
+
 
     /**
      * 初始化敏感词库，构建DFA算法模型
@@ -95,19 +99,34 @@ public class SensitivewordFilter {
      * 判断文字是否包含敏感字符
      *
      * @param txt       文字
-     * @param matchType 匹配规则 1：最小匹配规则，2：最大匹配规则
      * @return 若包含返回true，否则返回false
      */
-    public static boolean contains(String txt, int matchType) {
+    public static boolean contains(String txt) {
         boolean flag = false;
         for (int i = 0; i < txt.length(); i++) {
-            int matchFlag = checkSensitiveWord(txt, i, matchType); //判断是否包含敏感字符
+            int matchFlag = checkSensitiveWord(txt, i, MinMatchTYpe); //判断是否包含敏感字符
             if (matchFlag > 0) {    //大于0存在，返回true
                 flag = true;
             }
         }
         return flag;
     }
+
+    /**
+     * 获取敏感词Set集合
+     * @return
+     */
+  public static   Set<String> getSensitiveWordSet(){
+      wordSet = new HashSet<>();
+      SqlSession sqlSession = SqlSessionUtil.getSqlSession();
+      SensitiveMapper mapper = sqlSession.getMapper(SensitiveMapper.class);
+      List<DisallowWord> disallowWords = mapper.getdisallowWord();
+      for(int i = 0; i < disallowWords.size(); i++){
+          wordSet.add(disallowWords.get(i).getSensitiveword());
+      }
+
+      return wordSet;
+  }
 
 }
 

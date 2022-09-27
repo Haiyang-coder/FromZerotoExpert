@@ -61,6 +61,6 @@ public interface UserMapper {
      * @return
      * 插入数据库注册的新用户
      */
-    @Insert("insert into user (id, username, password) values (null , #{username}, #{password}) ")
-    int insertUser(@Param("username") String username, @Param("password") String password);
+    @Insert("insert into user (id, username, password, user_nickname) values (null , #{username}, #{password}, #{nickname}) ")
+    int insertUser(@Param("username") String username, @Param("password") String password, @Param("nickname")String nickname);
 }

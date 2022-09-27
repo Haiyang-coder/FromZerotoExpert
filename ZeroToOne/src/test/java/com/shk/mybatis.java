@@ -1,14 +1,17 @@
 package com.shk;
 
+import com.shk.utils.SensitivewordFilter;
 import com.shk.utils.SqlSessionUtil;
 import com.shk.mapper.UserMapper;
 import com.shk.pojo.User;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author: sunhengkang
@@ -18,21 +21,15 @@ public class mybatis {
 
     @Test
     public void myBatistest() throws IOException {
-//        //加载核心配置文件
-//        InputStream resourceAsStream = Resources.getResourceAsStream("mybatis-config.xml");
-//        //获取sqlsessionFactoryBuilder
-//        SqlSessionFactoryBuilder sqlSessionFactoryBuilder = new SqlSessionFactoryBuilder();
-//        //获取sqlsessionfactory
-//        SqlSessionFactory build = sqlSessionFactoryBuilder.build(resourceAsStream);
-//        //获取sqlsession,true表明要自动提交事物
-//        SqlSession sqlSession = build.openSession(true);
-//        //获取mapper借口对象
-//        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//        //测试功能
-//        int result = mapper.insertUser();
-//        //手动提交，可以提交自动
-//        //sqlSession.commit();
-//        System.out.println(result);
+        Set<String> wordSet = SensitivewordFilter.getSensitiveWordSet();
+        SensitivewordFilter.init(wordSet);
+        String nickname = "cnm";
+        boolean contains = SensitivewordFilter.contains(nickname);
+        if (contains){
+            System.out.println("不合规");
+        }else {
+            System.out.println("合规");
+        }
 
     }
 
@@ -65,14 +62,7 @@ public class mybatis {
 
     @Test
     public  void updateTest2() throws IOException {
-//        SqlSession sqlSession = Utils.getSqlSession();
-//        //获取mapper借口对象
-//        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-//        //测试功能
-//        User user1 = new User(null, "shk3", "df32");
-//        int user = mapper.insertUserByUser(user1);
-//        sqlSession.commit();
-//        System.out.println(user);
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(test.class);
     }
 
 }
