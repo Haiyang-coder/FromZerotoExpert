@@ -1,8 +1,10 @@
 package com.shk.utils;
 
-import com.shk.mapper.SensitiveMapper;
-import com.shk.pojo.DisallowWord;
+import com.shk.dao.SensitiveMapper;
+import com.shk.domain.DisallowWord;
+import com.shk.service.SensitiveService;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 
@@ -116,11 +118,9 @@ public class SensitivewordFilter {
      * 获取敏感词Set集合
      * @return
      */
-  public static   Set<String> getSensitiveWordSet(){
+  public static   Set<String> getSensitiveWordSet(List<DisallowWord> disallowWords){
       wordSet = new HashSet<>();
-      SqlSession sqlSession = SqlSessionUtil.getSqlSession();
-      SensitiveMapper mapper = sqlSession.getMapper(SensitiveMapper.class);
-      List<DisallowWord> disallowWords = mapper.getdisallowWord();
+
       for(int i = 0; i < disallowWords.size(); i++){
           wordSet.add(disallowWords.get(i).getSensitiveword());
       }

@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/from_zeroto_expert
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: shkwmnm7010500
+
+server:
+  port: 80
+
+
